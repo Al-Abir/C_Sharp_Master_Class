@@ -23,11 +23,15 @@ class Program
         var cmd = new NpgsqlCommand("SELECT * FROM users", conn);
         var reader = cmd.ExecuteReader();
 
-
        
         while (reader.Read())
         {
             Console.WriteLine($"{reader["id"]} - {reader["name"]} - {reader["age"]}");
         }
+
+    var delete = new NpgsqlCommand(
+    "DELETE FROM users WHERE name = 'Abir'", conn);
+ 
+     delete.ExecuteNonQuery();
     }
 }
